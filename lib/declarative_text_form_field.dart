@@ -6,7 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class DeclarativeTextFormField extends StatefulWidget {
   static Widget _defaultContextMenuBuilder(
     BuildContext context,
     EditableTextState editableTextState,
@@ -22,7 +22,7 @@ class CustomTextFormField extends StatefulWidget {
     );
   }
 
-  const CustomTextFormField({
+  const DeclarativeTextFormField({
     super.key,
     required this.text,
     this.groupId = EditableText,
@@ -275,14 +275,14 @@ class CustomTextFormField extends StatefulWidget {
   final String? restorationId;
 
   @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+  State<DeclarativeTextFormField> createState() => _DeclarativeTextFormFieldState();
 }
 
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
+class _DeclarativeTextFormFieldState extends State<DeclarativeTextFormField> {
   late final controller = TextEditingController(text: widget.text);
 
   @override
-  void didUpdateWidget(covariant CustomTextFormField oldWidget) {
+  void didUpdateWidget(covariant DeclarativeTextFormField oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (widget.text != controller.text) {
