@@ -94,3 +94,7 @@ class _MyFormState extends State<MyForm> {
     -   Because `DeclarativeTextFormField` is bound to `_name`, it automatically updates to show the new text.
 
 This demonstrates the declarative, two-way data flow without any manual controller management.
+
+---
+
+This open-source package is proudly maintained by [Statelysoft](https://statelysoft.com). If you're looking to build a high-quality application, we'd be happy to help.
