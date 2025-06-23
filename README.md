@@ -47,58 +47,37 @@ import 'package:declarative_text_form_field/declarative_text_form_field.dart';
 Here is a simple example demonstrating how to use `DeclarativeTextFormField`:
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:declarative_text_form_field/declarative_text_form_field.dart';
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MyForm extends StatefulWidget {
+  const MyForm({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyForm> createState() => _MyFormState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String _companyName = '';
+class _MyFormState extends State<MyForm> {
+  String _name = '';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: SizedBox(
-          width: 300,
-          child: Column(
-            children: [
-              const SizedBox(height: 48),
-              Text('Company Name: $_companyName'),
-              const SizedBox(height: 16),
-              DeclarativeTextFormField(
-                text: _companyName,
-                onChanged: (value) {
-                  setState(() {
-                    _companyName = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Company Name',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 48),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _companyName = 'Statelysoft';
-                  });
-                },
-                child: const Text('Change Company Name to "Statelysoft"'),
-              ),
-            ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        DeclarativeTextFormField(
+          text: _name,
+          onChanged: (value) => setState(() => _name = value),
+          decoration: const InputDecoration(
+            labelText: 'Name',
+            border: OutlineInputBorder(),
           ),
         ),
-      ),
+        const SizedBox(height: 16),
+        Text('Hello, $_name!'),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () => setState(() => _name = 'Flutter'),
+          child: const Text('Say Hi to Flutter'),
+        ),
+      ],
     );
   }
 }
@@ -106,12 +85,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ### Explanation
 
-1.  **`_companyName`**: A simple `String` in `_MyHomePageState` holds the value for the text field.
+1.  **`_name`**: A simple `String` in `_MyFormState` holds the value for the text field.
 2.  **`DeclarativeTextFormField`**:
-    -   The `text` property is bound to the `_companyName` variable. The field will always display the current value of `_companyName`.
-    -   The `onChanged` callback is triggered whenever the user types in the field. It calls `setState` to update `_companyName` with the new value.
+    -   The `text` property is bound to the `_name` variable. The field will always display the current value of `_name`.
+    -   The `onChanged` callback is triggered whenever the user types in the field. It calls `setState` to update `_name` with the new value.
 3.  **`ElevatedButton`**:
-    -   When the button is pressed, it calls `setState` and updates `_companyName` to `'Statelysoft'`.
-    -   Because `DeclarativeTextFormField` is bound to `_companyName`, it automatically updates to show the new text.
+    -   When the button is pressed, it calls `setState` and updates `_name` to `'Flutter'`.
+    -   Because `DeclarativeTextFormField` is bound to `_name`, it automatically updates to show the new text.
 
 This demonstrates the declarative, two-way data flow without any manual controller management.
