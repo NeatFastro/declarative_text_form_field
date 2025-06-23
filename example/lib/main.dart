@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 48),
               Text('Company Name: $_companyName'),
               SizedBox(height: 16),
-              CustomTextFormField(
+              DeclarativeTextFormField(
                 text: _companyName,
                 onChanged: (value) {
                   setState(() {
